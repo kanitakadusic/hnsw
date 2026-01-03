@@ -1,6 +1,6 @@
 import pytest
 
-from hnsw.index import HNSW
+from hnsw.index import Index
 from hnsw.node import Node
 
 
@@ -12,7 +12,7 @@ def test_hnsw_simple():
     ]
     query = [1.1, 1.1]
 
-    hnsw = HNSW(distance="euclidean")
+    hnsw = Index(distance="euclidean")
     for idx, vec in enumerate(vectors):
         hnsw.insert(vector=vec, metadata=idx)
     result = hnsw.k_nn_search(query=Node(query, -1), k=1, ef=100)[0]

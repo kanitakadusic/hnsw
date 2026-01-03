@@ -5,7 +5,7 @@ from hnsw.distance import Distance
 from hnsw.node import Node
 
 
-class HNSW:
+class Index:
     def __init__(self, distance: str, M: int = 16, ef_construction: int = 200):
         self.distance = Distance(distance)
         self.entry_point = None
