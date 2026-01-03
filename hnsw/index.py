@@ -6,8 +6,8 @@ from hnsw.node import Node
 
 
 class Index:
-    def __init__(self, distance: str, M: int = 16, ef_construction: int = 200):
-        self.distance = Distance(distance)
+    def __init__(self, space: str, M: int = 16, ef_construction: int = 200):
+        self.distance = Distance(space)
         self.entry_point = None
 
         self.M = M
@@ -19,7 +19,7 @@ class Index:
     def __random_layer(self) -> int:
         return int(np.floor(-np.log(np.random.uniform(0, 1)) * self.m_L))
 
-    def insert(self, vector: list[float], metadata=None):
+    def insert(self, vector: np.ndarray, metadata=None):
         new_point = Node(vector, self.__random_layer(), metadata)
 
         if self.entry_point is None:

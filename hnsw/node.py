@@ -4,11 +4,11 @@ import numpy as np
 class Node:
     _global_id = 0
 
-    def __init__(self, vector: list[float], layer: int, metadata=None):
+    def __init__(self, vector: np.ndarray, layer: int, metadata=None):
         self.id = Node._global_id
         Node._global_id += 1
 
-        self.vector = np.array(vector)
+        self.vector = vector
         self.layer = layer
         self.metadata = metadata
 
