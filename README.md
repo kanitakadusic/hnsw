@@ -1,4 +1,6 @@
-# hnsw
+# Hierarchical Navigable Small World
+
+Lightweight HNSW for experimenting with approximate nearest neighbors.
 
 ## References
 
