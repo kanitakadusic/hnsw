@@ -24,15 +24,18 @@ def test_simple():
 def test_recall():
     np.random.seed(42)
     space = "cosine"
-    num_vectors = 100
-    dim = 20
-    k = 3
+    M = 20
+    ef_construction = 200
+    num_vectors = 1000
+    dim = 30
+    k = 10
     ef = 50
+    target_recall = 0.95
 
     vectors = np.random.rand(num_vectors, dim)
     query_vector = np.random.rand(dim)
 
-    hnsw = Index(space)
+    hnsw = Index(space, M, ef_construction)
     nodes = []
     for idx, vec in enumerate(vectors):
         node = hnsw.insert(vec, idx)
@@ -47,4 +50,4 @@ def test_recall():
     bf_indices = np.argsort(distances)[:k]
 
     overlap = set(hnsw_indices).intersection(bf_indices)
-    assert len(overlap) > 0, "HNSW did not find any of the true nearest neighbors"
+    assert len(overlap) > int(k * target_recall), "HNSW did not find any of the true nearest neighbors"
