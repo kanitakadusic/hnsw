@@ -7,13 +7,16 @@ from hnsw.index import Index
 from hnsw.node import Node
 
 np.random.seed(42)
-
 n_runs = 50  # number of repetitions per search to average out timing
 max_power = 16  # maximum power of 2 for dataset size
 dim = 50
+
+space = "euclidean"
+M = 16
+ef_construction = 200
+
 k = 5
 ef = 50
-space = "euclidean"
 
 # dataset sizes
 sizes = [2 ** i for i in range(max_power + 1)]
@@ -28,7 +31,7 @@ bf_times = []
 recalls = []
 
 # initialize hnsw
-hnsw = Index(space)
+hnsw = Index(space, M, ef_construction)
 nodes = []
 current_count = 0
 power_count = 0
