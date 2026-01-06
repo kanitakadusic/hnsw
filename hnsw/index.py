@@ -28,11 +28,11 @@ class Index:
         entry_point = self.entry_point
 
         for layer in range(entry_point.layer, new_point.layer, -1):
-            entry_point = self.search_layer(new_point, entry_point, 1, layer)[0]
+            entry_point = self._search_layer(new_point, entry_point, 1, layer)[0]
 
         for layer in range(min(entry_point.layer, new_point.layer), -1, -1):
-            candidates = self.search_layer(new_point, entry_point, self.ef_construction, layer)
-            neighbors = self.select_neighbours_simple(new_point, candidates, self.M)
+            candidates = self._search_layer(new_point, entry_point, self.ef_construction, layer)
+            neighbors = self._select_neighbours_simple(new_point, candidates, self.M)
 
             # add neighbors bidirectionally
             for node in neighbors:
@@ -46,7 +46,7 @@ class Index:
                 node_neighbors = node.neighbors[layer]
                 max_neighbors = self.M_max if layer > 0 else self.M_max0
                 if len(node_neighbors) > max_neighbors:
-                    node.neighbors[layer] = self.select_neighbours_simple(node, node_neighbors, max_neighbors)
+                    node.neighbors[layer] = self._select_neighbours_simple(node, node_neighbors, max_neighbors)
 
             entry_point = candidates[0]
 
@@ -59,17 +59,17 @@ class Index:
         entry_point = self.entry_point
 
         for layer in range(entry_point.layer, 0, -1):
-            entry_point = self.search_layer(query, entry_point, 1, layer)[0]
-        candidates = self.search_layer(query, entry_point, ef, 0)
+            entry_point = self._search_layer(query, entry_point, 1, layer)[0]
+        candidates = self._search_layer(query, entry_point, ef, 0)
 
-        return self.select_neighbours_simple(query, candidates, k)
+        return self._select_neighbours_simple(query, candidates, k)
 
-    def select_neighbours_simple(self, query: Node, candidates: list[Node], top_n: int) -> list[Node]:
+    def _select_neighbours_simple(self, query: Node, candidates: list[Node], top_n: int) -> list[Node]:
         candidate_distance = [(c, self.distance(query, c)) for c in candidates]
         candidate_distance.sort(key=lambda pair: pair[1])
         return [neighbor for neighbor, _ in candidate_distance[:top_n]]
 
-    def search_layer(self, query: Node, entry_point: Node, ef: int, layer: int) -> list[Node]:
+    def _search_layer(self, query: Node, entry_point: Node, ef: int, layer: int) -> list[Node]:
         visited = set()
         visited.add(entry_point)
 
