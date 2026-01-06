@@ -8,7 +8,7 @@ from hnsw.node import Node
 
 np.random.seed(42)
 n_runs = 50  # number of repetitions per search to average out timing
-max_power = 16  # maximum power of 2 for dataset size
+max_power = 17  # maximum power of 2 for dataset size
 dim = 50
 
 space = "euclidean"
