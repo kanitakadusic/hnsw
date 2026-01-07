@@ -19,7 +19,7 @@ class Index:
     def __random_layer(self) -> int:
         return int(np.floor(-np.log(np.random.uniform(0, 1)) * self.m_L))
 
-    def insert(self, vector: np.ndarray, metadata=None):
+    def insert(self, vector: np.ndarray, metadata=None) -> Node:
         new_point = Node(vector, self.__random_layer(), metadata)
 
         if self.entry_point is None:

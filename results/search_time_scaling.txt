@@ -1,0 +1,23 @@
+---------------------------------------------------
+| n_runs: 30 | max_power: 17 | dim: 32 |
+| space: euclidean | M: 16 | ef_construction: 100 |
+| k: 5 | ef: 100 |
+---------------------------------------------------
+n: 2 ^  0 =          1 | HNSW avg:      0.020 | BF avg:      0.016 | recall: 1.00
+n: 2 ^  1 =          2 | HNSW avg:      0.035 | BF avg:      0.025 | recall: 1.00
+n: 2 ^  2 =          4 | HNSW avg:      0.062 | BF avg:      0.035 | recall: 1.00
+n: 2 ^  3 =          8 | HNSW avg:      0.108 | BF avg:      0.053 | recall: 1.00
+n: 2 ^  4 =         16 | HNSW avg:      0.222 | BF avg:      0.094 | recall: 1.00
+n: 2 ^  5 =         32 | HNSW avg:      0.503 | BF avg:      0.181 | recall: 1.00
+n: 2 ^  6 =         64 | HNSW avg:      1.003 | BF avg:      0.333 | recall: 1.00
+n: 2 ^  7 =        128 | HNSW avg:      1.789 | BF avg:      0.648 | recall: 1.00
+n: 2 ^  8 =        256 | HNSW avg:      2.277 | BF avg:      1.128 | recall: 1.00
+n: 2 ^  9 =        512 | HNSW avg:      3.849 | BF avg:      2.526 | recall: 1.00
+n: 2 ^ 10 =       1024 | HNSW avg:      5.818 | BF avg:      4.857 | recall: 1.00
+n: 2 ^ 11 =       2048 | HNSW avg:      7.160 | BF avg:      9.064 | recall: 1.00
+n: 2 ^ 12 =       4096 | HNSW avg:      9.108 | BF avg:     18.236 | recall: 0.99
+n: 2 ^ 13 =       8192 | HNSW avg:     10.937 | BF avg:     36.725 | recall: 0.99
+n: 2 ^ 14 =      16384 | HNSW avg:     12.197 | BF avg:     72.927 | recall: 0.97
+n: 2 ^ 15 =      32768 | HNSW avg:     13.650 | BF avg:    149.698 | recall: 0.95
+n: 2 ^ 16 =      65536 | HNSW avg:     14.218 | BF avg:    292.942 | recall: 0.99
+n: 2 ^ 17 =     131072 | HNSW avg:     15.140 | BF avg:    588.966 | recall: 0.97
